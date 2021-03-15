@@ -20,3 +20,10 @@ code {
 .main {
   text-align: center;
 }
+@media screen and (max-width: 600px) {
+  .city_card {
+    width: 80%;
+    background-color: rgb(231, 176, 176);
+    color: rgb(202, 10, 4);
+  }
+}
