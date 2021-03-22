@@ -8,7 +8,7 @@ function App() {
     <div className="main">
       <h1>Weather</h1>
       {cityJson.map((city) => (
-        <City city={city} key={uuid()} />
+        <City city={city} />
       ))}
     </div>
   );
