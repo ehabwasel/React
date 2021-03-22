@@ -14,7 +14,7 @@ const Fetch = ({ cityName }) => {
     try {
       setLoading(true);
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
       );
       const data = await res.json();
       if (data.cod == 200) {

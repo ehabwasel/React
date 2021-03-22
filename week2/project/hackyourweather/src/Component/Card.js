@@ -4,8 +4,8 @@ const Card = ({ weatherData }) => {
   return (
     <div className="city_card">
       <h3>
-        {weatherData.name} {" , "}
-        {weatherData.sys.country}
+        {` ${weatherData.name} 
+        ${weatherData.sys.country}`}
       </h3>
       <p>{weatherData.weather[0].main}</p>
       <div className="info">
@@ -18,18 +18,15 @@ const Card = ({ weatherData }) => {
 
         <span></span>
         <p>
-          {" "}
-          Min Temp : {Math.round(weatherData.main.temp_min)}
+          {`Min Temp : ${Math.round(weatherData.main.temp_min)}`}
           <sup>&deg;C</sup>
         </p>
         <p>
-          {" "}
-          Max Temp : {weatherData.main.temp_max}
+          {` Max Temp : ${weatherData.main.temp_max}`}
           <sup>&deg;C</sup>
         </p>
         <p>
-          {" "}
-          Location : {weatherData.coord.lat} , {weatherData.coord.lon}{" "}
+          Location : {weatherData.coord.lat} , {weatherData.coord.lon}
         </p>
       </div>
     </div>

@@ -5,7 +5,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/build
+/react_weather
+README.md
 # testing
 /coverage
 
