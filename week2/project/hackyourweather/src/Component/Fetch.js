@@ -3,10 +3,6 @@ import Button from "./Button";
 import Card from "./Card";
 const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 const Fetch = ({ cityName }) => {
-  // if (!cityName) {
-  //   setHasError(true);
-  //   return <p>please write </p>;
-  // }
   const [weatherData, setWeatherData] = useState();
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -32,9 +28,9 @@ const Fetch = ({ cityName }) => {
   return (
     <div>
       <Button onClickEvent={getCity} disabled={!cityName} />
-      {!hasError && loading && <li>lOADIN ....</li>}
+      {!hasError && loading && <p>lOADIN ....</p>}
       {!hasError && weatherData && <Card weatherData={weatherData} />}
-      {hasError && <h2>Failed to get data or write correct City Name ....</h2>}
+      {hasError && <p>Failed to get data or write correct City Name ....</p>}
     </div>
   );
 };
