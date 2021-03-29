@@ -4,7 +4,7 @@ const RandomJoke = () => {
   const [joke, setJoke] = useState();
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const getJke = async () => {
+  const getJoke = async () => {
     try {
       setLoading(true);
       const res = await fetch("https://official-joke-api.appspot.com/random_joke");
@@ -17,13 +17,13 @@ const RandomJoke = () => {
     }
   };
   useEffect(() => {
-    getJke();
+    getJoke();
   }, []);
   return (
     <div className="co_container">
-      {!hasError && loading && <li>lOADIN ....</li>}
+      {!hasError && loading && <p>lOADIN ....</p>}
       {!hasError && joke && <Joke joke={joke} />}
-      {hasError && <li>Failed to get data ....</li>}
+      {hasError && <p>Failed to get data ....</p>}
     </div>
   );
 };

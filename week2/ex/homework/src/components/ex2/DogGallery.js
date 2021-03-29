@@ -21,9 +21,9 @@ const DogGallery = () => {
     <div className="co_container">
       <h1>Random Dog photo</h1>
       <Button onClickEvent={getDogPhoto} />
-      {!hasError && loading && <li>lOADIN ....</li>}
+      {!hasError && loading && <p>lOADIN ....</p>}
       {!hasError && dogPhotos && <DogPhoto dogPhotos={dogPhotos} />}
-      {hasError && <li>Failed to get data ....</li>}
+      {hasError && <p>Failed to get data ....</p>}
     </div>
   );
 };

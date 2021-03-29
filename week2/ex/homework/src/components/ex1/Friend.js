@@ -21,9 +21,9 @@ const Friend = () => {
     <div className="co_container">
       <h1>Random friend</h1>
       <Button onClickEvent={getFriend} />
-      {!hasError && loading && <li>lOADIN ....</li>}
+      {!hasError && loading && <p>lOADIN ....</p>}
       {!hasError && friend && <FriendProfile friend={friend} />}
-      {hasError && <li>Failed to get data ....</li>}
+      {hasError && <p>Failed to get data ....</p>}
     </div>
   );
 };
