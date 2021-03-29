@@ -18,6 +18,7 @@ const Fetch = ({ cityName, setCityName }) => {
 
       const data = await res.json();
       if (data.cod == 200) {
+        setHasError(false);
         setWeatherData([data, ...weatherData]);
         setLoading(false);
         setCityName("");
