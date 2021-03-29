@@ -4,9 +4,8 @@ import Card from "./Card";
 import Search from "./Search";
 
 const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
-const arrayOfCities = [];
 
-const Fetch = ({ cityName }) => {
+const Fetch = ({ cityName, setCityName }) => {
   const [weatherData, setWeatherData] = useState([]);
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,8 +21,10 @@ const Fetch = ({ cityName }) => {
       if (data.cod == 200) {
         setWeatherData([data, ...weatherData]);
         setLoading(false);
+        setCityName("");
       } else {
         setHasError(true);
+        setLoading(false);
       }
     } catch (err) {
       setHasError(true);

@@ -20,7 +20,7 @@ const Search = () => {
         {/* {setCityName("")} */}
       </form>
 
-      <Fetch cityName={cityName} />
+      <Fetch cityName={cityName} setCityName={setCityName} />
     </div>
   );
 };
