@@ -8,6 +8,7 @@ const Fetch = ({ cityName, setCityName }) => {
   const [weatherData, setWeatherData] = useState([]);
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   const getCity = async () => {
     try {
@@ -15,16 +16,28 @@ const Fetch = ({ cityName, setCityName }) => {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
       );
-
       const data = await res.json();
       if (data.cod == 200) {
         setHasError(false);
-        setWeatherData([data, ...weatherData]);
+        setWeatherData((weatherData) => {
+          if (weatherData.some((city) => city.name === data.name)) {
+            setErrMsg("City Already Exists");
+            return [...weatherData];
+          } else {
+            setErrMsg("");
+            return [data, ...weatherData];
+          }
+        });
+
         setLoading(false);
         setCityName("");
       } else {
         setHasError(true);
         setLoading(false);
+      }
+      if (data.cod == 404) {
+        setErrMsg(`City "${cityName}" Not Found`);
+        setHasError(false);
       }
     } catch (err) {
       setHasError(true);
@@ -35,7 +48,8 @@ const Fetch = ({ cityName, setCityName }) => {
   return (
     <div>
       <Button onClickEvent={getCity} disabled={!cityName} />
-      {!hasError && loading && <p>LOADIN ....</p>}
+      {!hasError && loading && <p> LOADIN ....</p>}
+      {errMsg !== "" && <p>Error: {errMsg}</p>}
       {!hasError && weatherData && (
         <Card weatherData={weatherData} setWeatherData={setWeatherData} cityName={{ cityName }} />
       )}
