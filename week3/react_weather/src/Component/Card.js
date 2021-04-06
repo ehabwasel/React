@@ -1,11 +1,13 @@
 import React from "react";
 import uuid from "react-uuid";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Card = ({ weatherData, setWeatherData, setCityName }) => {
+const Card = ({ weatherData, setWeatherData }) => {
   const remove = (id) => {
     setWeatherData(weatherData.filter((data) => data.id !== id));
   };
+
   const Card_item = ({ city }) => {
     return (
       <div className="city_card">
@@ -13,11 +15,13 @@ const Card = ({ weatherData, setWeatherData, setCityName }) => {
           style={{ color: "red", cursor: "pointer", float: "right" }}
           onClick={() => remove(city.id)}
         />
+        <Link to={`/${city.id}`}>
+          <h3>
+            {`${city.name} 
+        ${city.sys.country}`}
+          </h3>
+        </Link>
 
-        <h3>
-          {`${city.name} 
-          ${city.sys.country}`}
-        </h3>
         <p>{city.weather[0].main}</p>
         <div className="info">
           <h5>{city.weather[0].description}</h5>
@@ -28,6 +32,7 @@ const Card = ({ weatherData, setWeatherData, setCityName }) => {
           />
 
           <span></span>
+
           <p>
             {`Min Temp : ${Math.round(city.main.temp_min)}`}
             <sup>&deg;C</sup>

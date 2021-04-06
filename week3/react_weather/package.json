@@ -13,8 +13,11 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-native": "^0.64.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-uuid": "^1.0.2",
+    "recharts": "^2.0.9",
+    "use-http": "^1.0.19",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
